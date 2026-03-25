@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root {
+  --foreground-rgb: 230, 230, 230;
+  --background-start-rgb: 10, 10, 10;
+  --background-end-rgb: 25, 25, 25;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom right,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    );
+  min-height: 100vh;
+  margin: 0;
+}
+
+::selection {
+  background: rgba(107, 114, 128, 0.4);
+  color: white;
+}
