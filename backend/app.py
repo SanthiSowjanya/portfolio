@@ -24,8 +24,8 @@ def contact():
     SMTP_SERVER = "smtp.gmail.com"
     SMTP_PORT = 587
     # Use environment variables for security
-    EMAIL_ADDRESS = os.environ.get("EMAIL_ADDRESS", "your_email@gmail.com")
-    EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD", "your_app_password")
+    EMAIL_ADDRESS = os.environ.get("EMAIL_ADDRESS", "charansowji9557@gmail.com")
+    EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD", "yral avfn unpu arnx")
     
     # Destination email
     DEST_EMAIL = "charansowji9557@gmail.com"
