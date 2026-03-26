@@ -2,6 +2,21 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
+const GithubIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-8.5a6.5 6.5 0 0 0-1.7-4.5 5.8 5.8 0 0 0-.2-4.5s-1.4-.5-4.5 1.7a14.5 14.5 0 0 0-8 0C3.4 2 2 2.5 2 2.5a5.8 5.8 0 0 0-.2 4.5 6.5 6.5 0 0 0-1.7 4.5c0 7 3 8.2 6 8.5a4.8 4.8 0 0 0-1 3.2v4"></path>
+    <path d="M9 18c-4.5 1.5-5-2.5-7-3"></path>
+  </svg>
+);
+
+const LinkedinIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+    <rect x="2" y="9" width="4" height="12"></rect>
+    <circle cx="4" cy="4" r="2"></circle>
+  </svg>
+);
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -93,6 +108,19 @@ export default function ContactPage() {
             <p className="text-red-400 text-center text-sm font-medium mt-2">Failed to send message. Please try again.</p>
           )}
         </form>
+
+        <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center relative z-10 border-t border-white/10 pt-8">
+          <p className="text-gray-400 text-sm mb-2 sm:mb-0 sm:mr-4 font-mono">Or find me elsewhere:</p>
+          <a href="https://github.com/SanthiSowjanya" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full sm:w-auto px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-white font-medium transition-all group">
+            <GithubIcon className="w-5 h-5 group-hover:text-gray-300" />
+            <span>GitHub</span>
+          </a>
+          <a href="https://linkedin.com/in/santhi-sowjanya-chokka-708004255" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full sm:w-auto px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-white font-medium transition-all group">
+            <LinkedinIcon className="w-5 h-5 group-hover:text-[#0a66c2]" />
+            <span>LinkedIn</span>
+          </a>
+        </div>
+
       </motion.div>
     </div>
   );

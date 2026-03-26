@@ -1,42 +1,64 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const skills = [
-  { category: "Frontend Dev", items: ["React.js", "Next.js", "Ember.js", "Tailwind CSS", "HTML5", "CSS3", "Material UI"] },
-  { category: "Backend Dev", items: ["Python", "PHP", "Node.js", "RESTful APIs", "Flask"] },
-  { category: "Core Languages", items: ["JavaScript", "TypeScript", "C", "C++"] },
-  { category: "Data Visualization", items: ["D3.js", "Three.js", "Recharts", "Chart.js"] },
-  { category: "State & Ecosystem", items: ["Git", "Figma", "Redux", "React Query"] }
+  { id: "frontend", category: "Frontend Dev", items: ["React.js", "Next.js", "Ember.js", "Tailwind CSS", "HTML5", "CSS3", "Material UI"] },
+  { id: "backend", category: "Backend Dev", items: ["Python", "PHP", "Node.js", "RESTful APIs", "Flask"] },
+  { id: "core", category: "Core Languages", items: ["JavaScript", "TypeScript", "C", "C++"] },
+  { id: "data", category: "Visualization", items: ["D3.js", "Three.js", "Recharts", "Chart.js"] },
+  { id: "tools", category: "Tools & Ecosystem", items: ["Git", "Figma", "Redux", "React Query"] }
 ];
 
 export default function SkillsVisualizer() {
-  return (
-    <div className="w-full space-y-16 pb-16">
-      {skills.map((skillGroup, idx) => (
-        <motion.div 
-          key={skillGroup.category}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 * idx }}
-          className="relative"
-        >
-          <div className="flex items-center gap-6 mb-8">
-            <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 uppercase tracking-[0.2em] drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]">
-              {skillGroup.category}
-            </h3>
-            <div className="h-[2px] flex-grow bg-gradient-to-r from-cyan-500/50 to-transparent" />
-          </div>
+  const [activeTab, setActiveTab] = useState(skills[0].id);
+  const activeCategory = skills.find(s => s.id === activeTab);
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            {skillGroup.items.map((item, itemIdx) => (
+  return (
+    <div className="w-full pb-32 sm:pb-16">
+      {/* Tab Navigation */}
+      <div className="flex flex-row overflow-x-auto sm:flex-wrap items-center sm:justify-start gap-2 mb-12 border-b border-white/10 pb-4 no-scrollbar">
+        {skills.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`relative whitespace-nowrap px-6 py-3 rounded-full text-sm font-bold tracking-wider transition-colors z-10 uppercase ${
+              activeTab === tab.id ? 'text-cyan-400' : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            {activeTab === tab.id && (
+              <motion.div
+                layoutId="activeSkillsTab"
+                className="absolute inset-0 bg-cyan-400/10 border border-cyan-400/30 rounded-full"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+            )}
+            <span className="relative z-20">{tab.category}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Cards Display */}
+      <div className="relative min-h-[350px]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
+          >
+            {activeCategory?.items.map((item, itemIdx) => (
               <motion.div
                 key={item}
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: (0.1 * idx) + (0.05 * itemIdx) }}
+                transition={{ duration: 0.3, delay: 0.05 * itemIdx }}
                 className="relative group cursor-crosshair"
               >
                 {/* Glowing backdrop on hover */}
@@ -58,9 +80,9 @@ export default function SkillsVisualizer() {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
-      ))}
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

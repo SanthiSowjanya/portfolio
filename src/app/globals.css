@@ -6,15 +6,36 @@
   --background-end-rgb: 25, 25, 25;
 }
 
+/* Responsive tweaks for mobile nav */
+.mobile-menu-link {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  padding: 0.75rem 0;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  nav {
+    height: 64px;
+  }
+  .mobile-menu-link {
+    font-size: 1.5rem;
+    padding: 1rem 0;
+  }
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
-      to bottom right,
-      rgb(var(--background-start-rgb)),
-      rgb(var(--background-end-rgb))
-    );
+    to bottom right,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
   min-height: 100vh;
   margin: 0;
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::selection {
