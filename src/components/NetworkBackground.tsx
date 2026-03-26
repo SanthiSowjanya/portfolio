@@ -128,5 +128,13 @@ export default function NetworkBackground() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="fixed inset-0 z-0 pointer-events-none opacity-90 mix-blend-screen" />;
+  return (
+    <div className="fixed inset-0 z-0 pointer-events-none">
+      {/* Animated network is hidden on mobile, visible on sm and up */}
+      <canvas ref={canvasRef} className="hidden sm:block w-full h-full opacity-90 mix-blend-screen" />
+      
+      {/* Mobile alternative: a subtle static dark gradient to replace the busy animation */}
+      <div className="sm:hidden w-full h-full bg-gradient-to-br from-[#050505] via-[#0f172a] to-[#050505] opacity-50" />
+    </div>
+  );
 }

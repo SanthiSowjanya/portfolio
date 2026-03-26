@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} bg-[#050505] text-white antialiased min-h-screen flex flex-col relative`}>
+      <body className={`${inter.className} bg-[#050505] text-white antialiased min-h-screen flex flex-col relative overflow-x-hidden`}>
         <NetworkBackground />
         <Navbar />
         <main className="flex-grow flex flex-col pt-20 relative z-10">

@@ -8,12 +8,12 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="relative w-full min-h-[calc(100vh-64px)] bg-gradient-to-br from-[#050505] via-[#111111] to-[#1f1f1f] flex lg:flex-row flex-col items-center justify-center p-8">
+    <div className="relative w-full min-h-[calc(100vh-64px)] bg-gradient-to-br from-[#050505] via-[#111111] to-[#1f1f1f] flex lg:flex-row flex-col items-center justify-center p-8 overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-gray-700/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none" />
       
       {/* Text Content */}
-      <div className="z-10 w-full lg:w-1/2 flex flex-col items-start justify-center gap-6 px-4 sm:px-12">
+      <div className="z-10 w-full lg:w-1/2 flex flex-col items-start justify-center gap-6 px-0 sm:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -22,10 +22,10 @@ export default function Home() {
           <span className="text-gray-400 font-mono tracking-widest text-sm sm:text-base mb-2 block uppercase">
             Full Stack Developer
           </span>
-          <h1 className="text-5xl sm:text-7xl font-bold text-gray-100 mb-2 tracking-tight">
+          <h1 className="text-4xl sm:text-7xl font-bold text-gray-100 mb-2 tracking-tight">
             Santhi Sowjanya Chokka
           </h1>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-500 mt-2">
+          <h2 className="text-2xl sm:text-4xl font-bold text-gray-500 mt-2">
             I engineer immersive web experiences.
           </h2>
         </motion.div>
