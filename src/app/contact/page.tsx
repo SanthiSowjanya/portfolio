@@ -55,7 +55,7 @@ export default function ContactPage() {
 
     try {
       const res = await fetch(
-        "https://santhisowjanya-portfolio.vercel.app/api/contact",
+        "https://santhisowjanya-portfolio.vercel.app/contact",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
