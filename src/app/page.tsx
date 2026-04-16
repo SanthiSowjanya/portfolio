@@ -18,7 +18,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-        >
+          >
           <span className="text-gray-400 font-mono tracking-widest text-sm sm:text-base mb-2 block uppercase">
             Full Stack Developer
           </span>
@@ -35,7 +35,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-        >
+          >
           With over 2.5 years of experience building scalable HRMS, CRM, and enterprise payroll systems, I specialize in combining robust backends with highly interactive, high-performance web applications.
         </motion.p>
 
@@ -44,7 +44,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-wrap gap-4 mt-8"
-        >
+          >
           <Link href="/projects" className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-all duration-300 border border-gray-600 shadow-[0_0_15px_rgba(156,163,175,0.1)] hover:shadow-[0_0_25px_rgba(156,163,175,0.3)]">
             Explore My Work
           </Link>

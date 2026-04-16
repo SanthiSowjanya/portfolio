@@ -54,14 +54,11 @@ export default function ContactPage() {
     setStatus("loading");
 
     try {
-      const res = await fetch(
-        "https://santhisowjanya-portfolio.vercel.app/contact",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        },
-      );
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
       if (res.ok) {
         setStatus("success");
@@ -151,8 +148,7 @@ export default function ContactPage() {
 
           {status === "success" && (
             <p className="text-green-400 text-center text-sm font-medium mt-2 leading-relaxed">
-              Message sent to charansowji9557@gmail.com! (Python Backend API
-              processed it)
+              Message sent successfully! I'll get back to you soon.
             </p>
           )}
           {status === "error" && (
