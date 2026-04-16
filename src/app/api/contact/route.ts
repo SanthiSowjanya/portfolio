@@ -13,7 +13,10 @@ export async function POST(req: Request) {
     }
 
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false, // upgrade later with STARTTLS
+      requireTLS: true,
       auth: {
         user: process.env.EMAIL_ADDRESS || 'charansowji9557@gmail.com',
         pass: process.env.EMAIL_PASSWORD || 'yral avfn unpu arnx',
